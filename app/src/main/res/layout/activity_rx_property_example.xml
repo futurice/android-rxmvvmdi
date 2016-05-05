@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="vm"
+            type="com.futurice.rxmvvmdi.viewmodels.RxPropertyExampleViewModel"
+            />
+    </data>
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.futurice.rxmvvmdi.activities.RxPropertyExampleActivity">
+
+        <TextView
+            android:id="@+id/cpu_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current CPU usage"/>
+
+        <TextView
+            android:id="@+id/cpu_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cpu_label"
+            android:textSize="20pt"
+            android:text="@{vm.cpuUsage}"/>
+
+        <TextView
+            android:id="@+id/max_cpu_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cpu_text"
+            android:text="Max CPU usage"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/max_cpu_label"
+            android:textSize="20pt"
+            android:text="@{vm.maxCpuUsage}"/>
+
+    </RelativeLayout>
+</layout>
+

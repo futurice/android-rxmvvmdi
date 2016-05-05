@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="handlers"
+            type="com.futurice.rxmvvmdi.activities.RxBindingExampleActivity.Handlers"
+            />
+    </data>
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".activities.RxBindingExampleActivity">
+
+        <TextView
+            android:id="@+id/blocked_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Is UI thread blocked?" />
+
+        <TextView
+            android:id="@+id/time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/blocked_label"
+            android:textSize="20pt"
+            android:text="00:00:00" />
+
+        <Button
+            android:id="@+id/calculate_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_text"
+            android:layout_marginTop="10dp"
+            android:text="Calculate!"
+            android:onClick="@{handlers.onCalculate}"/>
+
+        <TextView
+            android:id="@+id/iterations_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/calculate_button"
+            android:text="Calculation iterations completed"/>
+
+        <TextView
+            android:id="@+id/iterations_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iterations_label"
+            android:textSize="20pt"
+            android:text="0" />
+
+    </RelativeLayout>
+
+</layout>
