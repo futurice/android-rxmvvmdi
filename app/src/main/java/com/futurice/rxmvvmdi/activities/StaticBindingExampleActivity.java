@@ -1,6 +1,5 @@
 package com.futurice.rxmvvmdi.activities;
 
-import android.app.Activity;
 import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
@@ -17,6 +16,11 @@ import com.futurice.rxmvvmdi.viewmodels.ViewModel;
 
 import javax.inject.Inject;
 
+/**
+ * This activity demonstrates static data-binding, introducing the following concepts:
+ * - binding a VM and simple properties to the view using data-binding.
+ * - VM property conversion to values suitable for displaying in the view using BindingAdapters.
+ */
 public class StaticBindingExampleActivity extends MvvmActivity {
     @Inject
     StaticBindingExampleViewModel viewModel;

@@ -3,18 +3,22 @@ package com.futurice.rxmvvmdi.activities;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
+import com.futurice.rxmvvmdi.R;
 import com.futurice.rxmvvmdi.RxMvvmApp;
 import com.futurice.rxmvvmdi.dagger.modules.ActivityModule;
 import com.futurice.rxmvvmdi.databinding.ActivityRxPropertyExampleBinding;
-
-import com.futurice.rxmvvmdi.R;
 import com.futurice.rxmvvmdi.viewmodels.RxPropertyExampleViewModel;
 import com.futurice.rxmvvmdi.viewmodels.ViewModel;
 
 import javax.inject.Inject;
 
-import rx.subscriptions.CompositeSubscription;
-
+/**
+ * This activity is for demonstrating the use of RxProperties:
+ * - binding RxProperties to rx.Observables
+ * - binding RxProperties to the view using data-binding
+ * - the VM also demonstrates the use of shared rx.Observables to avoid duplicate processing when
+ *   subscribing multiple times to the same source.
+ */
 public class RxPropertyExampleActivity extends MvvmActivity {
 
     private ActivityRxPropertyExampleBinding binding;
@@ -37,9 +41,5 @@ public class RxPropertyExampleActivity extends MvvmActivity {
     @Override
     protected ViewModel getViewModel() {
         return viewModel;
-    }
-
-    @Override
-    protected void bindView(CompositeSubscription subscriptions) {
     }
 }

@@ -14,6 +14,14 @@ import com.futurice.rxmvvmdi.viewmodels.ViewModel;
 
 import javax.inject.Inject;
 
+/**
+ * This activity acts as the entry point to the other exercises, but also demonstrates the
+ * following concepts:
+ * - using data-binding to add click handlers (click handlers could also be added directly in the
+ *   VM, but that would force having handler function signatures with unnecessary view dependencies)
+ * - using DI to inject a navigator for starting activities. This avoids a context dependency in the
+ *   VM, making it more testable.
+ */
 public class MainActivity extends MvvmActivity {
     private static final String TAG = MainActivity.class.getName();
 

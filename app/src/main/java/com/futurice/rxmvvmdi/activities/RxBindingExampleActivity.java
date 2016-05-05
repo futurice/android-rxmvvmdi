@@ -19,6 +19,15 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
+/**
+ * This activity introduces the following concepts:
+ * - binding rx.Observables from the VM manually in the view layer to view components (without
+ *   declarative data-binding)
+ * - using a base MvvmActivity to assist in controlling lifecycle events of the view and VM.
+ * - the importance of understanding schedulers and their effect on Observable streams via
+ *   observerOn and subscribeOn. (Slightly modifying the streams in the view and VM will cause a
+ *   crash and/or main thread hangs when calling vm.calculate(), which can then be solved).
+ */
 public class RxBindingExampleActivity extends MvvmActivity {
 
     private ActivityRxBindingExampleBinding binding;
