@@ -63,7 +63,6 @@ public class RxProperty<T> extends ObservableField<T> implements rx.Observer<T>,
     }
 
     private void init() {
-        RxProperty<T> _this = this;
         output.observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<T>() {
                     @Override
