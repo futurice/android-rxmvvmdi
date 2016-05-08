@@ -20,8 +20,7 @@ public class MainActivityViewModelTest extends BaseTest {
 
     private MainViewModel viewModel;
 
-    @Before
-    public void setup() {
+    protected void setup() {
         viewModel = new MainViewModel(navigator);
     }
 

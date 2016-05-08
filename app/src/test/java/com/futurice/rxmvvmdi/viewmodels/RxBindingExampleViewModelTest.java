@@ -13,8 +13,7 @@ public class RxBindingExampleViewModelTest extends BaseTest {
 
     private RxBindingExampleViewModel viewModel;
 
-    @Before
-    public void setup() {
+    protected void setup() {
         viewModel = new RxBindingExampleViewModel();
     }
 

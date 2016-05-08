@@ -1,7 +1,6 @@
 package com.futurice.rxmvvmdi;
 
 import org.junit.Before;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import rx.Scheduler;
@@ -11,20 +10,20 @@ import rx.plugins.RxJavaPlugins;
 import rx.plugins.RxJavaSchedulersHook;
 import rx.schedulers.TestScheduler;
 
-/**
- * Created by osal on 8.5.2016.
- */
-public class BaseTest {
+public abstract class BaseTest {
 
     protected TestScheduler mainScheduler;
     protected TestScheduler ioScheduler;
     protected TestScheduler computationScheduler;
     protected TestScheduler newThreadScheduler;
 
+    protected abstract void setup();
+
     @Before
     public void init() {
         initSchedulers();
         MockitoAnnotations.initMocks(this);
+        setup();
     }
 
     private void initSchedulers() {
