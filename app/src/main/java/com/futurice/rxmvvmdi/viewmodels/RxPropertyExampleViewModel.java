@@ -1,5 +1,6 @@
 package com.futurice.rxmvvmdi.viewmodels;
 
+import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 
 import com.futurice.rxmvvmdi.services.SystemMonitorService;
@@ -11,6 +12,7 @@ public class RxPropertyExampleViewModel extends ViewModel {
 
     public final RxProperty<String> cpuUsage;
     public final RxProperty<String> maxCpuUsage;
+    public final RxProperty<String> customInput;
 
     private final SystemMonitorService systemMonitorService;
 
@@ -18,6 +20,7 @@ public class RxPropertyExampleViewModel extends ViewModel {
         this.systemMonitorService = systemMonitorService;
         cpuUsage = new RxProperty<>();
         maxCpuUsage = new RxProperty<>();
+        customInput = new RxProperty<>();
     }
 
     @Override
