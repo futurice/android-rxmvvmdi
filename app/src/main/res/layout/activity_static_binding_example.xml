@@ -23,12 +23,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:textSize="20pt"
             android:text="Capsule: " />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/capsule_label"
+            android:textSize="20pt"
             android:text="@{vm.capsule.name}"
             android:textColor="@{vm.capsule.type}"/>
     </RelativeLayout>
