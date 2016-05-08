@@ -1,5 +1,5 @@
 # android-rxmvvmdi
-Project for introducing Android developers to how one can combine Rx, MVVM, DI, and unit testing concepts. Each activity introduces a certain set of concepts which are documented in the activity class itself.
+Project for introducing Android developers to how one can combine Rx, MVVM, DI, data-binding, and unit testing concepts. Each activity introduces a certain set of concepts which are documented in the activity class itself.
 
 ## Setup
 ### JDK8
