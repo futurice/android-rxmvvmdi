@@ -15,9 +15,9 @@ public class RxPropertyExampleViewModel extends ViewModel {
     private final SystemMonitorService systemMonitorService;
 
     public RxPropertyExampleViewModel(@NonNull final SystemMonitorService systemMonitorService) {
+        this.systemMonitorService = systemMonitorService;
         cpuUsage = new RxProperty<>();
         maxCpuUsage = new RxProperty<>();
-        this.systemMonitorService = systemMonitorService;
     }
 
     @Override
