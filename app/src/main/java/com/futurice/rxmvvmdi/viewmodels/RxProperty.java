@@ -108,7 +108,7 @@ public class RxProperty<T> implements rx.Observer<T> {
     public void setSet(RxProperty<T> property) {
     }
 
-    @BindingAdapter("app:bindset")
+    @BindingAdapter("bindset")
     public static void bindEditText(EditText editText, RxProperty<String> property) {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
