@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/max_cpu_label"
             android:textSize="20pt"
-            android:text="@{vm.maxCpuUsage.get}"/>
+            android:text=""/>
 
         <TextView
             android:id="@+id/two_way_label"
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/two_way_label"
-            android:textColor="@{vm.customInput.get.length() > 5 ? @color/red : @color/black}"
+            android:textColor="@color/black"
             app:bindset="@{vm.customInput.set}"/>
 
     </RelativeLayout>

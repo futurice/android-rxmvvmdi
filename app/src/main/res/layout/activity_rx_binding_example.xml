@@ -2,13 +2,6 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-        <variable
-            name="handlers"
-            type="com.futurice.rxmvvmdi.activities.RxBindingExampleActivity.Handlers"
-            />
-    </data>
-
     <RelativeLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -39,8 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/time_text"
             android:layout_marginTop="10dp"
-            android:text="Calculate!"
-            android:onClick="@{handlers.onCalculate}"/>
+            android:text="Calculate!" />
 
         <TextView
             android:id="@+id/iterations_label"

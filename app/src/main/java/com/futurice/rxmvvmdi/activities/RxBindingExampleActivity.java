@@ -43,7 +43,6 @@ public class RxBindingExampleActivity extends MvvmActivity {
         component.inject(this);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_rx_binding_example);
-        binding.setHandlers(new Handlers());
     }
 
     @Override
@@ -55,18 +54,10 @@ public class RxBindingExampleActivity extends MvvmActivity {
     protected void bindView(CompositeSubscription subscriptions) {
         subscriptions.add(viewModel
                 .getTimeStream()
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(time -> binding.timeText.setText(time)));
 
         subscriptions.add(viewModel
                 .getHighLoadStream()
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(iteration -> binding.iterationsText.setText(iteration.toString())));
-    }
-
-    public class Handlers {
-        public void onCalculate(View view) {
-            viewModel.calculate();
-        }
     }
 }

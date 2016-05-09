@@ -42,19 +42,4 @@ public class StaticBindingExampleActivity extends MvvmActivity {
     protected ViewModel getViewModel() {
         return viewModel;
     }
-
-    @BindingAdapter("android:textColor")
-    public static void setTextColor(TextView view, StaticBindingExampleViewModel.CoffeeType coffeeType) {
-        switch (coffeeType) {
-            case CAPRICCIO:
-                view.setTextColor(Color.argb(0xFF, 0x3E, 0xE4, 0x00));
-                break;
-            case LIVANTO:
-                view.setTextColor(Color.argb(0xFF, 0xFF, 0x99, 0x00));
-                break;
-            default:
-                view.setTextColor(Color.BLACK);
-                break;
-        }
-    }
 }

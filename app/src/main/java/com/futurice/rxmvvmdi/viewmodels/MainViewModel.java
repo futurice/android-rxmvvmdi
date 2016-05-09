@@ -1,10 +1,13 @@
 package com.futurice.rxmvvmdi.viewmodels;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import com.futurice.rxmvvmdi.activities.RxBindingExampleActivity;
 import com.futurice.rxmvvmdi.activities.RxPropertyExampleActivity;
 import com.futurice.rxmvvmdi.activities.StaticBindingExampleActivity;
+import com.futurice.rxmvvmdi.dagger.ActivityScope;
 import com.futurice.rxmvvmdi.services.NavigatorService;
 
 import rx.subscriptions.CompositeSubscription;
@@ -12,8 +15,12 @@ import rx.subscriptions.CompositeSubscription;
 public class MainViewModel extends ViewModel {
 
     private final NavigatorService navigatorService;
+    private final Context context;
 
-    public MainViewModel(@NonNull final NavigatorService navigatorService) {
+    public MainViewModel(
+            @NonNull final Context context,
+            @NonNull final NavigatorService navigatorService) {
+        this.context = context;
         this.navigatorService = navigatorService;
     }
 
@@ -22,7 +29,7 @@ public class MainViewModel extends ViewModel {
     }
 
     public void selectStaticDataBinding() {
-        navigatorService.goTo(StaticBindingExampleActivity.class);
+        context.startActivity(new Intent(context, StaticBindingExampleActivity.class));
     }
 
     public void selectRxBinding() {

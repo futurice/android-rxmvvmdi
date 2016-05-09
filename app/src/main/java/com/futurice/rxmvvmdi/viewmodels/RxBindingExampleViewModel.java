@@ -31,7 +31,6 @@ public class RxBindingExampleViewModel extends ViewModel {
 
         calculateSubject = PublishSubject.create();
         highLoadStream = calculateSubject
-                .observeOn(Schedulers.computation())
                 .scan((sum, value) -> ++sum)
                 .map(iteration -> {
                     // Simulate high processing load

@@ -40,8 +40,8 @@ public class ActivityModule {
 
     @Provides
     @ActivityScope
-    MainViewModel provideMainViewModel(NavigatorService navigatorService) {
-        return new MainViewModel(navigatorService);
+    MainViewModel provideMainViewModel(@ActivityScope Context context, NavigatorService navigatorService) {
+        return new MainViewModel(context, navigatorService);
     }
 
     @Provides

@@ -26,12 +26,13 @@
             android:textSize="20pt"
             android:text="Capsule: " />
 
+        <!-- Make the android:textColor property of this TextView change dynamically -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/capsule_label"
             android:textSize="20pt"
             android:text="@{vm.capsule.name}"
-            android:textColor="@{vm.capsule.type}"/>
+            android:textColor="@color/black"/>
     </RelativeLayout>
 </layout>
