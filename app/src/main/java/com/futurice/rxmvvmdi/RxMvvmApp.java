@@ -2,6 +2,7 @@ package com.futurice.rxmvvmdi;
 
 import android.app.Application;
 
+import com.facebook.stetho.Stetho;
 import com.futurice.rxmvvmdi.dagger.components.AppComponent;
 
 /**
@@ -13,6 +14,8 @@ public class RxMvvmApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Stetho.initializeWithDefaults(this);
 
         appComponent = AppComponent.Initializer.init(this);
         appComponent.inject(this);

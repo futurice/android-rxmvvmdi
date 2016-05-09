@@ -41,12 +41,20 @@ dependencies {
             // Rx
             'io.reactivex:rxjava:1.1.+',
             'io.reactivex:rxandroid:1.1.+',
+            'io.reactivex:rxjava-math:1.0.+',
 
             // DI
             'com.google.dagger:dagger:2.2',
 
             // Java8 date APIs
-            'com.jakewharton.threetenabp:threetenabp:1.0.3',
+            'com.jakewharton.threetenabp:threetenabp:1.0.+',
+
+            // Retrofit and GSON for backend calls, and stetho for debugging them
+            'com.squareup.retrofit2:retrofit:2.0.+',
+            'com.squareup.retrofit2:converter-gson:2.0.+',
+            'com.squareup.retrofit2:adapter-rxjava:2.0.+',
+            'com.facebook.stetho:stetho:1.3.+',
+            'com.facebook.stetho:stetho-okhttp3:1.3.+',
     )
     // DI
     provided "com.google.dagger:dagger-compiler:2.2"

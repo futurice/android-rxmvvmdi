@@ -1,6 +1,5 @@
 package com.futurice.rxmvvmdi.viewmodels;
 
-import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 
 import com.futurice.rxmvvmdi.services.SystemMonitorService;
