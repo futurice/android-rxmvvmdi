@@ -5,7 +5,8 @@ import android.support.annotation.NonNull;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * Created by osal on 4.5.2016.
+ * Base VM class that can be used by activities and fragments to manage VM lifecycles in a
+ * consistent manner.
  */
 public abstract class ViewModel {
 

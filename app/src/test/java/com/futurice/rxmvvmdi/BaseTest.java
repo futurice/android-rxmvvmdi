@@ -10,6 +10,11 @@ import rx.plugins.RxJavaPlugins;
 import rx.plugins.RxJavaSchedulersHook;
 import rx.schedulers.TestScheduler;
 
+/**
+ * Base class for tests that initializes all mocks annotated with @Mock using Mockito.
+ * It also sets up TestSchedulers for all Rx schedulers so Rx streams can be tested more reliably
+ * regardless of which thread they run on normally.
+ */
 public abstract class BaseTest {
 
     protected TestScheduler mainScheduler;
