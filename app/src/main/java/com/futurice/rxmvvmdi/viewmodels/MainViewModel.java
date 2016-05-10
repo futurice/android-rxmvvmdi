@@ -10,6 +10,8 @@ import com.futurice.rxmvvmdi.activities.StaticBindingExampleActivity;
 import com.futurice.rxmvvmdi.dagger.ActivityScope;
 import com.futurice.rxmvvmdi.services.NavigatorService;
 
+import javax.inject.Inject;
+
 import rx.subscriptions.CompositeSubscription;
 
 public class MainViewModel extends ViewModel {
@@ -17,6 +19,7 @@ public class MainViewModel extends ViewModel {
     private final NavigatorService navigatorService;
     private final Context context;
 
+    @Inject
     public MainViewModel(
             @NonNull final Context context,
             @NonNull final NavigatorService navigatorService) {

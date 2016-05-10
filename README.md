@@ -50,7 +50,7 @@ Have a look at `IBackendService`. This service will be configured by retrofit to
 2. Modify `ActivityComponent` and `ActivityModule` so you can inject dependencies into that activity.
 3. Create a new button in `MainActivity` to navigate to the activity.
 4. Create a provider function for `IBackendService` with dagger. You have to decide whether you should put it in the `ActivityModule` as a singleton or in the `ActivityModule` as an activity scoped dependency.
-5. Create a view model with a dependency to IBackendService and tell `ActivityModule` how to construct the view model.
+5. Create a view model with a dependency to IBackendService.
 6. Inject the view model into the activity.
 7. Create a layout that displays the following fields: 
   1. length of the longest post
@@ -59,6 +59,7 @@ Have a look at `IBackendService`. This service will be configured by retrofit to
 8. Create properties in the view model for the information to be displayed.
 9. Use data-binding to display the properties in the view.
 10. Create a unit test for your view model to make sure it works correctly.
+11. (optional) Check with Stetho that you are not making more than one request to each endpoint.
 
 #### Scroll down for hints to the exercises
 

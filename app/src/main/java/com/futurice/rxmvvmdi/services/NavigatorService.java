@@ -11,7 +11,7 @@ public class NavigatorService {
 
     private final Context context;
 
-    public NavigatorService(@ActivityScope @NonNull final Context context) {
+    public NavigatorService(@NonNull final Context context) {
         this.context = context;
     }
 
