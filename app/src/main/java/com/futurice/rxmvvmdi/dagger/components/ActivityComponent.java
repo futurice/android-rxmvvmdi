@@ -11,8 +11,8 @@ import com.futurice.rxmvvmdi.dagger.modules.ActivityModule;
 
 import dagger.Subcomponent;
 
-@ActivityScope
 @Subcomponent(modules = ActivityModule.class)
+@ActivityScope
 public interface ActivityComponent {
     Activity activity();
 

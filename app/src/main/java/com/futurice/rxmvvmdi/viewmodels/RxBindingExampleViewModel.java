@@ -8,6 +8,8 @@ import org.threeten.bp.format.DateTimeFormatter;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 import rx.Observable;
 import rx.schedulers.Schedulers;
 import rx.subjects.PublishSubject;
@@ -19,6 +21,7 @@ public class RxBindingExampleViewModel extends ViewModel {
     private final Observable<Integer> highLoadStream;
     private final PublishSubject<Integer> calculateSubject;
 
+    @Inject
     public RxBindingExampleViewModel() {
         final long intervalMs = 10;
         final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("mm:ss:SS");

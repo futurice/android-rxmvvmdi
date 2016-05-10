@@ -4,6 +4,8 @@ import android.support.annotation.NonNull;
 
 import com.futurice.rxmvvmdi.services.SystemMonitorService;
 
+import javax.inject.Inject;
+
 import rx.Observable;
 import rx.subscriptions.CompositeSubscription;
 
@@ -15,6 +17,7 @@ public class RxPropertyExampleViewModel extends ViewModel {
 
     private final SystemMonitorService systemMonitorService;
 
+    @Inject
     public RxPropertyExampleViewModel(@NonNull final SystemMonitorService systemMonitorService) {
         this.systemMonitorService = systemMonitorService;
         cpuUsage = new RxProperty<>();

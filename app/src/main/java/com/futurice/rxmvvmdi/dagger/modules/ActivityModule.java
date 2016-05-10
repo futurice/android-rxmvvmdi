@@ -37,28 +37,4 @@ public class ActivityModule {
     NavigatorService provideNavigatorService(@ActivityScope Context context) {
         return new NavigatorService(context);
     }
-
-    @Provides
-    @ActivityScope
-    MainViewModel provideMainViewModel(NavigatorService navigatorService) {
-        return new MainViewModel(navigatorService);
-    }
-
-    @Provides
-    @ActivityScope
-    StaticBindingExampleViewModel provideStaticBindingExampleViewModel() {
-        return new StaticBindingExampleViewModel();
-    }
-
-    @Provides
-    @ActivityScope
-    RxBindingExampleViewModel provideRxBindingExampleViewModel() {
-        return new RxBindingExampleViewModel();
-    }
-
-    @Provides
-    @ActivityScope
-    RxPropertyExampleViewModel provideRxPropertyExampleViewModel(SystemMonitorService systemMonitorService) {
-        return new RxPropertyExampleViewModel(systemMonitorService);
-    }
 }

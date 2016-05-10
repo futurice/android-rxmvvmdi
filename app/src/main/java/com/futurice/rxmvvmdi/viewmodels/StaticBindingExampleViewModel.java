@@ -2,6 +2,8 @@ package com.futurice.rxmvvmdi.viewmodels;
 
 import android.support.annotation.NonNull;
 
+import javax.inject.Inject;
+
 import rx.subscriptions.CompositeSubscription;
 
 public class StaticBindingExampleViewModel extends ViewModel {
@@ -11,7 +13,12 @@ public class StaticBindingExampleViewModel extends ViewModel {
         LIVANTO
     }
 
-    public Capsule capsule = new Capsule(CoffeeType.LIVANTO, "Livanto");
+    public Capsule capsule;
+
+    @Inject
+    public StaticBindingExampleViewModel() {
+        capsule = new Capsule(CoffeeType.LIVANTO, "Livanto");
+    }
 
     @Override
     protected void subscribe(@NonNull CompositeSubscription subscriptions) {
