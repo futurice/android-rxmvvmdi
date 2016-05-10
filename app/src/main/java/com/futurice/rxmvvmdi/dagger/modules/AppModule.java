@@ -34,20 +34,4 @@ public class AppModule {
     public SystemMonitorService provideSystemMonitorService() {
         return new SystemMonitorService();
     }
-
-    @Provides
-    @Singleton
-    public IBackendService provideBackendService() {
-        OkHttpClient httpClient = new OkHttpClient.Builder()
-                .addNetworkInterceptor(new StethoInterceptor())
-                .build();
-
-        return new Retrofit.Builder()
-                .client(httpClient)
-                .baseUrl("http://jsonplaceholder.typicode.com")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io()))
-                .build()
-                .create(IBackendService.class);
-    }
 }
