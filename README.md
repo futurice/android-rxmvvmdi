@@ -50,6 +50,20 @@ Have a look at `IBackendService`. This service will be configured by retrofit to
 2. Modify `ActivityComponent` and `ActivityModule` so you can inject dependencies into that activity.
 3. Create a new button in `MainActivity` to navigate to the activity.
 4. Create a provider function for `IBackendService` with dagger. You have to decide whether you should put it in the `ActivityModule` as a singleton or in the `ActivityModule` as an activity scoped dependency.
+  1. Use the following block of code to create an instance of IBackendService:
+  ```
+  OkHttpClient httpClient = new OkHttpClient.Builder()
+          .addNetworkInterceptor(new StethoInterceptor())
+          .build();
+
+  return new Retrofit.Builder()
+          .client(httpClient)
+          .baseUrl("http://jsonplaceholder.typicode.com")
+          .addConverterFactory(GsonConverterFactory.create())
+          .addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io()))
+          .build()
+          .create(IBackendService.class);
+  ```
 5. Create a view model with a dependency to IBackendService.
 6. Inject the view model into the activity.
 7. Create a layout that displays the following fields: 
