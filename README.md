@@ -49,7 +49,7 @@ Have a look at `IBackendService`. This service will be configured by retrofit to
 1. Create a new activity.
 2. Modify `ActivityComponent` and `ActivityModule` so you can inject dependencies into that activity.
 3. Create a new button in `MainActivity` to navigate to the activity.
-4. Create a provider function for `IBackendService` with dagger. You have to decide whether you should put it in the `ActivityModule` as a singleton or in the `ActivityModule` as an activity scoped dependency.
+4. Create a provider function for `IBackendService` with dagger. You have to decide whether you should put it in the `AppModule` as a singleton or in the `ActivityModule` as an activity scoped dependency.
   1. Use the following block of code to create an instance of IBackendService:
   ```
   OkHttpClient httpClient = new OkHttpClient.Builder()
