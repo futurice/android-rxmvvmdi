@@ -14,6 +14,7 @@ public class RxPropertyExampleViewModel extends ViewModel {
     public final RxProperty<String> cpuUsage;
     public final RxProperty<String> maxCpuUsage;
     public final RxProperty<String> customInput;
+    public final RxProperty<String> upperCaseInput;
 
     private final SystemMonitorService systemMonitorService;
 
@@ -23,6 +24,7 @@ public class RxPropertyExampleViewModel extends ViewModel {
         cpuUsage = new RxProperty<>();
         maxCpuUsage = new RxProperty<>();
         customInput = new RxProperty<>();
+        upperCaseInput = new RxProperty<>();
     }
 
     @Override
@@ -39,5 +41,10 @@ public class RxPropertyExampleViewModel extends ViewModel {
                 .map(usage -> usage + "%")
                 .subscribe(maxCpuUsage)
         );
+        subscriptions.add(customInput
+                .getStream()
+                .filter(input -> input != null)
+                .map(input -> input.toUpperCase())
+                .subscribe(upperCaseInput));
     }
 }

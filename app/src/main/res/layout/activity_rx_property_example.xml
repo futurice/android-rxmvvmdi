@@ -63,6 +63,12 @@
             android:textColor="@{vm.customInput.get.length() > 5 ? @color/red : @color/black}"
             app:bindset="@{vm.customInput.set}"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/two_way_text"
+            android:text="@{vm.upperCaseInput.get}"/>
+
     </RelativeLayout>
 </layout>
 
