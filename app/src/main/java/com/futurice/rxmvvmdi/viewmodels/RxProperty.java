@@ -5,6 +5,7 @@ import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 
 import rx.android.schedulers.AndroidSchedulers;
@@ -21,6 +22,8 @@ import rx.subjects.SerializedSubject;
  * - automatically observes on the main thread
  */
 public class RxProperty<T> implements rx.Observer<T> {
+
+    private static final String TAG = RxProperty.class.getName();
 
     private final SerializedSubject<T, T> subject = new SerializedSubject(PublishSubject.create());
     private final rx.Observable<T> output;
@@ -67,20 +70,22 @@ public class RxProperty<T> implements rx.Observer<T> {
     }
 
     private void init() {
-        output.observeOn(AndroidSchedulers.mainThread())
+        // The property is expected to be bound to UI elements, so we assume that consumers
+        // no not care about the full history of value changes. Therefore, we apply backpressure
+        // handling by taking the latest value and ignore duplicate values.
+        output.onBackpressureLatest()
+                .distinctUntilChanged()
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<T>() {
                     @Override
                     public void call(T t) {
-                        boolean isEqual;
-                        if (value.get() != null) {
-                            isEqual = value.get().equals(t);
-                        }
-                        else {
-                            isEqual = (value.get() == t);
-                        }
-                        if (!isEqual) {
-                            value.set(t);
-                        }
+                        value.set(t);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Log.e(TAG, "onError: " + throwable.getMessage());
+                        throwable.printStackTrace();
                     }
                 });
     }
