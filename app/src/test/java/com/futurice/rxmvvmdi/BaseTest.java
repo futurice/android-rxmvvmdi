@@ -1,6 +1,7 @@
 package com.futurice.rxmvvmdi;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.mockito.MockitoAnnotations;
 
 import rx.Scheduler;
@@ -17,41 +18,28 @@ import rx.schedulers.TestScheduler;
  */
 public abstract class BaseTest {
 
-    protected TestScheduler mainScheduler;
-    protected TestScheduler ioScheduler;
-    protected TestScheduler computationScheduler;
-    protected TestScheduler newThreadScheduler;
+    private static final DelegatingTestScheduler delegatingMainScheduler = new DelegatingTestScheduler();
+    private static final DelegatingTestScheduler delegatingIoScheduler = new DelegatingTestScheduler();
+    private static final DelegatingTestScheduler delegatingComputationScheduler = new DelegatingTestScheduler();
+    private static final DelegatingTestScheduler delegatingNewThreadScheduler = new DelegatingTestScheduler();
 
-    protected abstract void setup();
-
-    @Before
-    public void init() {
-        initSchedulers();
-        MockitoAnnotations.initMocks(this);
-        setup();
-    }
-
-    private void initSchedulers() {
-        mainScheduler = new TestScheduler();
-        ioScheduler = new TestScheduler();
-        computationScheduler = new TestScheduler();
-        newThreadScheduler = new TestScheduler();
-
+    @BeforeClass
+    public static void initSchedulers() {
         RxJavaPlugins.getInstance().reset();
         RxJavaPlugins.getInstance().registerSchedulersHook(new RxJavaSchedulersHook() {
             @Override
             public Scheduler getComputationScheduler() {
-                return computationScheduler;
+                return delegatingComputationScheduler;
             }
 
             @Override
             public Scheduler getIOScheduler() {
-                return ioScheduler;
+                return delegatingIoScheduler;
             }
 
             @Override
             public Scheduler getNewThreadScheduler() {
-                return newThreadScheduler;
+                return delegatingNewThreadScheduler;
             }
         });
 
@@ -59,8 +47,40 @@ public abstract class BaseTest {
         RxAndroidPlugins.getInstance().registerSchedulersHook(new RxAndroidSchedulersHook() {
             @Override
             public Scheduler getMainThreadScheduler() {
-                return mainScheduler;
+                return delegatingMainScheduler;
             }
         });
+    }
+
+    @Before
+    public void init() {
+        resetSchedulers();
+        MockitoAnnotations.initMocks(this);
+        setup();
+    }
+
+    private void resetSchedulers() {
+        delegatingMainScheduler.setInnerScheduler(new TestScheduler());
+        delegatingIoScheduler.setInnerScheduler(new TestScheduler());
+        delegatingComputationScheduler.setInnerScheduler(new TestScheduler());
+        delegatingNewThreadScheduler.setInnerScheduler(new TestScheduler());
+    }
+
+    protected abstract void setup();
+
+    protected TestScheduler mainScheduler() {
+        return delegatingMainScheduler.getInnerScheduler();
+    }
+
+    protected TestScheduler ioScheduler() {
+        return delegatingIoScheduler.getInnerScheduler();
+    }
+
+    protected TestScheduler computationScheduler() {
+        return delegatingComputationScheduler.getInnerScheduler();
+    }
+
+    protected TestScheduler newThreadScheduler() {
+        return delegatingNewThreadScheduler.getInnerScheduler();
     }
 }
