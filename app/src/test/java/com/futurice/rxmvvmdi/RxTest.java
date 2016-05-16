@@ -16,7 +16,7 @@ import rx.schedulers.TestScheduler;
  * It also sets up TestSchedulers for all Rx schedulers so Rx streams can be tested more reliably
  * regardless of which thread they run on normally.
  */
-public abstract class BaseTest {
+public abstract class RxTest {
 
     private static final DelegatingTestScheduler delegatingMainScheduler = new DelegatingTestScheduler();
     private static final DelegatingTestScheduler delegatingIoScheduler = new DelegatingTestScheduler();

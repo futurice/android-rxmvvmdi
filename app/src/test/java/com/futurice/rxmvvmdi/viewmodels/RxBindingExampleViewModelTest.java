@@ -1,6 +1,6 @@
 package com.futurice.rxmvvmdi.viewmodels;
 
-import com.futurice.rxmvvmdi.BaseTest;
+import com.futurice.rxmvvmdi.RxTest;
 
 import org.junit.Test;
 
@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import rx.observers.TestSubscriber;
 
-public class RxBindingExampleViewModelTest extends BaseTest {
+public class RxBindingExampleViewModelTest extends RxTest {
 
     private RxBindingExampleViewModel viewModel;
 
