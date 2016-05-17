@@ -2,6 +2,7 @@ package com.futurice.rxmvvmdi.viewmodels;
 
 import android.support.annotation.NonNull;
 
+import com.futurice.rxmvvmdi.activities.ListBindingExampleActivity;
 import com.futurice.rxmvvmdi.activities.RxBindingExampleActivity;
 import com.futurice.rxmvvmdi.activities.RxPropertyExampleActivity;
 import com.futurice.rxmvvmdi.activities.StaticBindingExampleActivity;
@@ -34,5 +35,9 @@ public class MainViewModel extends ViewModel {
 
     public void selectRxProperty() {
         navigatorService.goTo(RxPropertyExampleActivity.class);
+    }
+
+    public void selectListBinding() {
+        navigatorService.goTo(ListBindingExampleActivity.class);
     }
 }

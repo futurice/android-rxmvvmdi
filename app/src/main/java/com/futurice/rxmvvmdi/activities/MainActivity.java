@@ -61,5 +61,9 @@ public class MainActivity extends MvvmActivity {
         public void onRxPropertyClicked(View view) {
             viewModel.selectRxProperty();
         }
+
+        public void onListBindingClicked(View view) {
+            viewModel.selectListBinding();
+        }
     }
 }

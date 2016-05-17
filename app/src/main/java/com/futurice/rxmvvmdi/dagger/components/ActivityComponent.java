@@ -2,6 +2,7 @@ package com.futurice.rxmvvmdi.dagger.components;
 
 import android.app.Activity;
 
+import com.futurice.rxmvvmdi.activities.ListBindingExampleActivity;
 import com.futurice.rxmvvmdi.activities.MainActivity;
 import com.futurice.rxmvvmdi.activities.RxBindingExampleActivity;
 import com.futurice.rxmvvmdi.activities.RxPropertyExampleActivity;
@@ -20,4 +21,5 @@ public interface ActivityComponent {
     void inject(StaticBindingExampleActivity activity);
     void inject(RxBindingExampleActivity activity);
     void inject(RxPropertyExampleActivity activity);
+    void inject(ListBindingExampleActivity activity);
 }

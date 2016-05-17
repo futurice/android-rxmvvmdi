@@ -46,6 +46,12 @@
             android:layout_height="wrap_content"
             android:text="RxProperty"
             android:onClick="@{handlers.onRxPropertyClicked}"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="List binding"
+            android:onClick="@{handlers.onListBindingClicked}"/>
     </LinearLayout>
 </layout>
 

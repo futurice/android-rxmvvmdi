@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".activities.StaticBindingExampleActivity" />
         <activity android:name=".activities.RxBindingExampleActivity" />
-        <activity android:name=".activities.RxPropertyExampleActivity"></activity>
+        <activity android:name=".activities.RxPropertyExampleActivity" />
+        <activity android:name=".activities.ListBindingExampleActivity"></activity>
     </application>
 
 </manifest>
