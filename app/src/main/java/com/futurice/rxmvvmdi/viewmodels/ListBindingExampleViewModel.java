@@ -7,8 +7,11 @@ import android.support.annotation.NonNull;
 import com.futurice.rxmvvmdi.models.Post;
 import com.futurice.rxmvvmdi.services.IBackendService;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.inject.Inject;
 
+import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.subscriptions.CompositeSubscription;
 
@@ -29,12 +32,24 @@ public class ListBindingExampleViewModel extends ViewModel {
 
     @Override
     protected void subscribe(@NonNull CompositeSubscription subscriptions) {
+        // Demonstrates the dynamic nature of the collection data binding by adding new items
+        // to the list every itemAddDelayMs.
+        final long itemAddDelayMs = 200;
         subscriptions.add(backendService
                 .getPosts()
+                .flatMap(posts -> {
+                    return Observable.from(posts)
+                            .startWith((Post)null)
+                            .zipWith(Observable.interval(itemAddDelayMs, TimeUnit.MILLISECONDS), (post, time) -> post);
+                })
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(newPosts -> {
-                    posts.clear();
-                    posts.addAll(newPosts);
+                .subscribe(post -> {
+                    if (post == null) {
+                        posts.clear();
+                    }
+                    else {
+                        posts.add(post);
+                    }
                 })
         );
     }
